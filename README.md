@@ -2,6 +2,13 @@
 
 # 2.
 
+**Potential bottlenecks:**
+ - HTTP requests 
+ - 
+
+**Improvements:**
+ - (http://imageoptim.com/)
+
 # 3.
 
 **The used technique is:**
@@ -19,7 +26,7 @@
 
 **Other possible solutions:**
  - Using an alpha-transparent png as container background (http://caniuse.com/#search=png%20alpha)
- - Using rgba/hsla background color for container element with alpha value != 1 (http://caniuse.com/#search=rgba)
+ - Using rgba/hsla background color for container element with alpha value < 1 (http://caniuse.com/#search=rgba)
  - Other extremities: use svg, with alpha filter or fill/stroke-opacity (http://caniuse.com/#search=svg); insert canvas, use rgba fillStyle (http://caniuse.com/#search=canvas)
 
 # 4.
