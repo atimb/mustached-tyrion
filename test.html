@@ -1,7 +1,11 @@
+---
+title: Assessment
+---
+
 # 1.
 
 **Setup:**
- - I don't really get this question. It could be a fat client architecture, where the server just exposes a JSON API, and client takes care of view rendering, it could be pure serverside view rendering, or it could be an interum solution (which probably I would choose).
+ - I don't really get this question. It could be a fat client architecture, where the server just exposes a JSON API, and client takes care of view rendering, it could be pure server side view rendering, or it could be an interim solution(which probably I would choose), where the first load of the page is rendered by the server, but subsequent ajax requests only return partial JSON or HTML that the client should process and insert on its own.
 
 **Compatibility:**
  - The number of pages should not be relevant to the browser compatibility. There should be automated (e.g. Selenium) tests that test for every possible user interaction, with every allowed input values, in every supported browser. On the visual side, most probably manual testing is needed to verify proper rendering in different browsers.
@@ -10,8 +14,8 @@
 
 **Potential bottlenecks:**
  - Too many parallel requests towards an HTTP endpoint (browsers only open 2-6 concurrent TCP sockets towards an endpoint -> combine, minify resources..)
- - Network bandwith (For upload, cookies can grow requests -> use different domain for cookie-free resources) (For download -> enable HTTP gzip compression)
- - Including scripts and styles in <head> (fetching, parsing) is done syncronously, so it effectively delays the page parsing and rendering (-> use deferred and async scripts..)
+ - Network bandwidth (For upload, cookies can grow requests -> use different domain for cookie-free resources) (For download -> enable HTTP gzip compression)
+ - Including scripts and styles in <head> (fetching, parsing) is done synchronously, so it effectively delays the page parsing and rendering (-> use deferred and async scripts..)
  - Computing intensive javascript included or embedded anywhere on the page delays further parsing and rendering (UI and javascript are usually running on the same thread).
 
 **Improvements:**
@@ -46,11 +50,11 @@
 **Many buttons:**
  - Make use of event bubbling and bind event handler to a parent element containing all the thousand buttons, and check event.target to find out if it came from an anchor, and which one. (See performance considerations at http://api.jquery.com/on/#direct-and-delegated-events)
 
-Please find example implementation with jQuery in index.html.
+Please find example implementation with jQuery [here](example.html).
 
 # 5.
 
-Please find CSS declarations with example rendering in index.html.
+Please find CSS declarations with example rendering [here](example.html).
 
 Could be also done with something like: (but this CSS3 selector is not compatible with IE<9)
 
