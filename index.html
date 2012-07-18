@@ -9,19 +9,19 @@
             }
 
             .photo-grid {
-                position: relative;
-                left: 5px;
             }
             .photo {
                 list-style-type: none;
                 display: inline-block;
                 width: 25%;
+                zoom: 1; /* <IE8 */
+                *display: inline; /* <IE8 */
             }
             .photo-link {
                 display: block;
                 overflow: hidden;
                 text-align: center;
-                margin: 0 10px 10px 0;
+                margin: 5px;
             }
             .photo-img {
                 display: block;
@@ -36,7 +36,6 @@
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
         <script type="text/javascript">
             $(function() {
-                
                 /*  4.  */
                 // bind direct event handler
                 $('#onebutton').click(function(e) {
@@ -53,7 +52,7 @@
                 });
                 // create arbitary number of buttons
                 var container = $('<div />');
-                for (var i=0; i<30; i++) {
+                for (var i=0; i<100; i++) {
                     var button = $('<input />', { type: 'button', value: 'Open popup '+i });
                     var anchor = $('<a />', { href: '#popup_'+i }).append(button).appendTo(container); // build stuff outside of DOM
                 }
@@ -89,42 +88,14 @@
     </head>
     <body>
         <section>
-            <h3>1)</h3>
-            <a href="http://cache.hyves-static.net/images/nixel.c2db45a8.gif">This image</a>
-        </section>
-        <section>
-            <h3>2)</h3>
-            <a href="http://cache.hyves-static.net/images/nixel.c2db45a8.gif">This image</a>
-        </section>
-        <section>
-            <h3>3)</h3>
-            <p>The used technique is:</p>
-            <ul>
-                <li>The opaque content is wrapped inside a container div, and a new element responsible for the transparent background is inserted as well into the container. The background div is removed from the flow with absolute positioning, stretched to the size of the container, has background-color set, made transparent with opacity(filter for &lt;=IE8) property, and has negative z-index set not to overlap the content itself.</li>
-            </ul>
-            <p>Improvements for this solution:</p>
-            <ul>
-                <li>Simplify markup by generating the background element from CSS, for example with the :before pseudo class.<br />
-                    .box-con-inner.transparent:before {<br />
-                        content: '';<br />
-                        /* ... existing definition from bg class */<br />
-                    }</li>
-            <p>Other possible solutions:</p>
-            <ul>
-                <li>Transparent </li>
-            </ul>
-            <a href="http://caniuse.com/#search=rgba"></a>
-            <div style="background: url('http://cache.hyves-static.net/images/nixel.c2db45a8.gif'); width: 100px; height: 100px;"></div>
-        </section>
-        <section>
-            <h3>4)</h3>
+            <h3>4.</h3>
             <p>One button:</p>
             <a id="onebutton" href="#popup" target="_blank"><input type="button" value="Open popup!" /></a>
-            <p>Many button:</p>
+            <p>Many buttons:</p>
             <div id="thousandbuttons"></div>
         </section>
         <section>
-            <h3>5)</h3>
+            <h3>5.</h3>
             <div id="photo-container"></div>
         </section>
     </body>
