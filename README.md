@@ -1,16 +1,17 @@
 # 1.
 
 **Setup:**
- - 
+ - I don't really get this question. It could be a fat client architecture, where the server just exposes a JSON API, and client takes care of view rendering, it could be pure serverside view rendering, or it could be an interum solution (which probably I would choose).
 
 **Compatibility:**
- - The number of pages should not be relevant to the browser compatibility. There should be automated (e.g. Selenium) tests that test for every possible user interaction in every supported browser. On the visual side, most probably manual testing is needed to verify proper rendering in different browsers.
+ - The number of pages should not be relevant to the browser compatibility. There should be automated (e.g. Selenium) tests that test for every possible user interaction, with every allowed input values, in every supported browser. On the visual side, most probably manual testing is needed to verify proper rendering in different browsers.
 
 # 2.
 
 **Potential bottlenecks:**
- - Too many parallel requests towards an HTTP endpoint (browsers only open 2-6 concurrent TCP sockets towards an endpoint)
- - Including scripts and styles in <head> (fetching, parsing) is done syncronously, so it effectively delays the page parsing and rendering. (Use deferred and async scripts..)
+ - Too many parallel requests towards an HTTP endpoint (browsers only open 2-6 concurrent TCP sockets towards an endpoint -> combine, minify resources..)
+ - Network bandwith (For upload, cookies can grow requests -> use different domain for cookie-free resources) (For download -> enable HTTP gzip compression)
+ - Including scripts and styles in <head> (fetching, parsing) is done syncronously, so it effectively delays the page parsing and rendering (-> use deferred and async scripts..)
  - Computing intensive javascript included or embedded anywhere on the page delays further parsing and rendering (UI and javascript are usually running on the same thread).
 
 **Improvements:**
