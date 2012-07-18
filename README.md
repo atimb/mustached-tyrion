@@ -1,20 +1,28 @@
 # 1.
 
+**Setup:**
+ - 
+
+**Compatibility:**
+ - The number of pages should not be relevant to the browser compatibility. There should be automated (e.g. Selenium) tests that test for every possible user interaction in every supported browser. On the visual side, most probably manual testing is needed to verify proper rendering in different browsers.
+
 # 2.
 
 **Potential bottlenecks:**
- - HTTP requests 
- - 
+ - Too many parallel requests towards an HTTP endpoint (browsers only open 2-6 concurrent TCP sockets towards an endpoint)
+ - Including scripts and styles in <head> (fetching, parsing) is done syncronously, so it effectively delays the page parsing and rendering. (Use deferred and async scripts..)
+ - Computing intensive javascript included or embedded anywhere on the page delays further parsing and rendering (UI and javascript are usually running on the same thread).
 
 **Improvements:**
- - (http://imageoptim.com/)
+ - I am not familiar with the website, but after a quick check, one thing I would improve is that, a lot of user actions trigger full page reload, instead of doing it the ajax way, which would result in faster load times and less flickering.
+ - + Pro tip: your images can be further (lossless) optimized (for example I could chop off 20% from [this sprite](http://cache4.hyves-static.net/images/redesign/buttons/buttons_sprite.956b41c6.png).)
 
 # 3.
 
 **The used technique is:**
  - The opaque content is wrapped inside a container div, and a new element responsible for the transparent background is inserted as well into the container. The background div is removed from the flow with absolute positioning, stretched to the size of the container, has background-color set, made transparent with opacity(filter for &lt;=IE8) property, and has negative z-index set not to overlap the content itself.
 
-**Improvements for this solution:**
+**Improvement for this technique:**
  - Simplify markup by generating the background element from CSS, for example with the :before pseudo class. (http://caniuse.com/#search=pseudo)
 
 ```css
