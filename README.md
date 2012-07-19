@@ -50,11 +50,11 @@ title: Assessment
 **Many buttons:**
  - Make use of event bubbling and bind event handler to a parent element containing all the thousand buttons, and check event.target to find out if it came from an anchor, and which one. (See performance considerations at http://api.jquery.com/on/#direct-and-delegated-events)
 
-Please find example implementation with jQuery [here](example.html).
+Please find example implementation with jQuery [here](http://atimb.github.com/mustached-tyrion/example.html).
 
 # 5.
 
-Please find CSS declarations with example rendering [here](example.html).
+Please find CSS declarations with example rendering [here](http://atimb.github.com/mustached-tyrion/example.html).
 
 Could be also done with something like: (but this CSS3 selector is not compatible with IE<9)
 
