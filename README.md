@@ -11,8 +11,11 @@
 **Potential bottlenecks:**
  - Too many parallel requests towards an HTTP endpoint (browsers only open 2-6 concurrent TCP sockets towards an endpoint -> combine, minify resources..)
  - Network bandwidth (For upload, cookies can grow requests -> use different domain for cookie-free resources) (For download -> enable HTTP gzip compression)
- - Including scripts and styles in <head> (fetching, parsing) is done synchronously, so it effectively delays the page parsing and rendering (-> use deferred and async scripts..)
+ - Server is not responding fast enough (-> introduce reverse proxies/caches)
+ - Including scripts and styles from the markup (fetching, parsing) is done synchronously, so it effectively delays the page parsing and rendering (-> use deferred and async scripts..)
  - Computing intensive javascript included or embedded anywhere on the page delays further parsing and rendering (UI and javascript are usually running on the same thread).
+ - Too complex markup will make the DOM tree huge, and reflow, repaint will take too much time
+ - Building DOM from javascript must be done carefully not to always trigger reflow, repaint (-> build outside of DOM, add in one step)
 
 **Improvements:**
  - I am not familiar with the website, but after a quick check, one thing I would improve is that, a lot of user actions trigger full page reload, instead of doing it the ajax way, which would result in faster load times and less flickering.
