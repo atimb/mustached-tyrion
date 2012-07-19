@@ -1,7 +1,3 @@
----
-title: Assessment
----
-
 # 1.
 
 **Setup:**
